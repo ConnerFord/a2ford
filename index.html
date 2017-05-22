@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>My Order Form</title>
+		<link rel="stylesheet" href="css/w3.css">
+		<link rel="stylesheet" type="text/css" href="css/Form.css">
+		<link href="https://fonts.googleapis.com/css?family=Kalam|Yellowtail" rel="stylesheet">
+
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+
+		<style>
+			body {
+			background: url("images/baseball.jpg");
+			background-repeat: no-repeat;
+			background-size: 100%;
+			}
+
+			h1 {
+				font-size: 4em;
+				text-align: center;
+				font-family: 'Kalam', cursive;
+				}
+				h2 {
+				font-size: 2em;
+				text-align: center;
+				font-family: 'Yellowtail', cursive;
+				}
+				ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				width: 200px;
+				background-color: #f1f1f1;
+				}
+
+				li a {
+				display: block;
+				color: #000;
+				padding: 8px 16px;
+				text-decoration: none;
+				}
+
+				li a.active {
+				background-color: #4CAF50;
+				color: white;
+				}
+
+				li a:hover:not(.active) {
+				background-color: #555;
+				color: white;
+			}
+		</style>
+
+		<script src="js/accounting.js"></script>
+		<script src="js/OrderProcessing.js"></script>
+
+	</head>
+
+	<body>
+
+		<ul>
+			<li>
+				<a class="active" href="../MyClock/index.html">Clock</a>
+			</li>
+
+			<li>
+				<a href="http://www.baseballexpress.com/" class="w3-bar-item w3-button">Baseball Express</a>
+			</li>
+			<li>
+				<a href="http://www.baseballmonkey.com/" class="w3-bar-item w3-button">Baseball Monkey</a>
+			</li>
+			<li>
+				<a href="https://www.rawlings.com/" class="w3-bar-item w3-button">Rawlings</a>
+			</li>
+		</ul>
+
+		<h1>Welcome, take a look around!</h1>
+		<h2>Created by: Conner Ford, April 2017</h2>
+		<br>
+		<hr>
+		<br>
+		<p id="showSize"></p>
+		<p id="setShipper"></p>
+
+		<div align="center">
+			<form name="orderForm">
+				<table style="background-color:#DDFFDD" border="5" width="900" cellpadding="5" cellspacing="0" summary="">
+					<tbody>
+						<tr>
+							<td style="background-color: #FF5722" colspan="4" align="center"><B>Baseball Clothing Order Form</B></td>
+						</tr>
+						<tr  style="background-color: #673AB7">
+							<td>Item</td>
+							<td>Qty</td>
+							<td>Each</td>
+							<td align="right">Total</td>
+						</tr>
+						<tr>
+							<td><a href="descriptions/hat.html">Hat</a></td>
+							<td>
+							<input name="line" type="text" size="5"
+							value="" onkeyup="count(this.form,0,25.95)">
+							</td>
+							<td>$25.95</td>
+							<td align="right">
+							<input name="line_sum"
+							type="text" size="10" readonly>
+							</td>
+						</tr>
+
+						<tr>
+							<td><a href="descriptions/cleats.html">Cleats</a></td>
+							<td>
+							<input name="line" type="text" size="5"
+							value="" onkeyup="count(this.form,1,115.95)">
+							</td>
+							<td>$115.95</td>
+							<td align="right">
+							<input name="line_sum"
+							type="text" size="10" readonly>
+							</td>
+						</tr>
+
+						<tr>
+							<td><a href="descriptions/jersey.html">Jersey</a></td>
+							<td>
+							<input name="line" type="text" size="5"
+							value="" onkeyup="count(this.form,2,15.95)">
+							</td>
+							<td>$15.95</td>
+							<td align="right">
+							<input name="line_sum"
+							type="text" size="10" readonly>
+							</td>
+						</tr>
+
+						<tr>
+							<td><a href="descriptions/pants.html">Pants</a></td>
+							<td>
+							<input name="line" type="text" size="5" value="" onkeyup="count(this.form,3,20.95)">
+							</td>
+							<td>$20.95</td>
+							<td align="right">
+							<input name="line_sum"
+							type="text" size="10" readonly>
+							</td>
+						</tr>
+
+						<tr>
+							<td><a href="descriptions/sunglasses.html">Sunglasses</a></td>
+							<td>
+							<input name="line" type="text" size="5" value="" onkeyup="count(this.form,4,199.95)">
+							</td>
+							<td>$199.95</td>
+							<td align="right">
+							<input name="line_sum"
+							type="text" size="10" readonly>
+							</td>
+						</tr>
+
+						<tr style="background-color: #673AB7">
+
+							<td colspan="3" align="right">Options Total :</td>
+							<td align="right">
+							<input name="options_Total" type="text" size="10" readonly>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Size</td>
+							<td>
+							<input type="radio" name="size" onclick="setSize(this.value)" value="Extra Small">
+							Extra Small
+							<br>
+							<input type="radio" name="size" onclick="setSize(this.value)" value="Small">
+							Small
+							<br>
+							<input type="radio" name="size" onclick="setSize(this.value)" value="Medium">
+							Medium
+							<br>
+							<input type="radio" name="size" onclick="setSize(this.value)" value="Large">
+							Large
+							<br>
+							<input type="radio" name="size" onclick="setSize(this.value)" value="Extra Large">
+							Extra Large
+							<br>
+							<br>
+							Your size is:
+							<input type="text" id="mySize">
+							</td>
+
+							<td> Extra Small $4.95
+							<br>
+							Small $9.95
+							<br>
+							Medium $14.95
+							<br>
+							Large $19.95
+							<br>
+							Extra Large $25.95 </td>
+
+							<td align="right">
+							<input id="lineSize"
+							type="text" size="10" readonly>
+							</td>
+						</tr>
+
+						<tr>
+							<td>Shipping</td>
+							<td>
+							<select id="theShipper">
+								<option value="USPS">USPS</option>
+								<option value="UPS">UPS</option>
+								<option value="FedEx">FedEx</option>
+								<option value="PICKUP">Pick Up</option>
+							</select>
+							<br>
+							<br>
+							Shipped
+							<input type="text" id="myShipper">
+							<input type="button" onclick="setShipper()" value="submit">
+							</td>
+							<td>USPS $9.95
+							<br>
+							UPS $12.95
+							<br>
+							FedEx $14.95
+							<br>
+							Pick Up Free </td>
+							<td align="right">
+							<input name="lineShip"
+							type="text" size="10" readonly>
+							</td>
+						</tr>
+
+						<tr style="background-color: #673AB7">
+							<td colspan="3" align="right">Sales Tax :</td>
+							<td align="right">
+							<input name="sales_tax" type="text" size="10" readonly>
+							</td>
+						</tr>
+
+						<tr style="background-color: #673AB7">
+							<td>
+							<input type="button" value="Reset" onclick="init()">
+							</td>
+							<td colspan="2" align="right">Grand Total :</td>
+							<td align="right">
+							<input name="grand_total" type="text" size="10" readonly>
+							</td>
+						</tr>
+
+						<tr>
+							<td style="background-color: #673AB7" colspan="4" align="center">
+							<input type="button"
+							value="Press to Verify Order"
+							onclick="get_data(this.form)">
+							</td>
+						</tr>
+
+					</tbody>
+
+				</table>
+
+			</form>
+
+			<form name="confirmationForm">
+				<table style="background-color: #AAAAAA" width="900" border="4" width="700"
+				cellpadding="5" cellspacing="0" summary="">
+					<tbody>
+						<tr>
+							<td align="center">							<textarea name="order" rows="10" cols="90">
+</textarea></td>
+						</tr>
+					</tbody>
+				</table>
+			</form>
+		</div>
+		</div>
+	</body>
+
+</html>
